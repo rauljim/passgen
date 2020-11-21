@@ -1,7 +1,7 @@
 from passgen import passgen
-
-NUM_PASSWORDS_DEFAULT = 5
+from passgen import args
 
 if __name__ == '__main__':
-    for password, _ in zip(passgen.passgen(), range(NUM_PASSWORDS_DEFAULT)):
+    cli_options = args.get_cli_options()
+    for password, _ in zip(passgen.passgen(), range(cli_options.count)):
         print(password)
