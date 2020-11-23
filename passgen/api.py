@@ -12,7 +12,7 @@ def passgen(options):
     :return: generator yielding passphrases according to options.
     """
     dictionary_words = make_word_generator(options.dictionary)
-    picker = make_picker_generator(dictionary_words, options.numwords)
+    picker = make_picker_generator(dictionary_words, options)
     while True:
         picked_words = next(picker)
         transformed_words = transform(picked_words)

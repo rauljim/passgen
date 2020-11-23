@@ -1,7 +1,7 @@
 from unittest import TestCase
 import random
 
-from passgen import picker
+from passgen import picker, args
 
 
 class TestPicker(TestCase):
@@ -17,5 +17,7 @@ class TestPicker(TestCase):
         picker._choice = original_choice
 
     def test_num_words_greater_than_words_in_dictionary(self):
-        picker_generator = picker.make_picker_generator('abc', 9999)
+        options = args.get_default_options()
+        options.num_words = 9999
+        picker_generator = picker.make_picker_generator('abc', options)
         assert 9999 == len(next(picker_generator))
