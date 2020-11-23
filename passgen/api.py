@@ -1,5 +1,5 @@
 from passgen.picker import make_picker_generator
-from passgen.dictionary import get_words_from_dictionary
+from passgen.dictionary import make_word_generator
 from passgen.transformer import transform
 
 
@@ -11,8 +11,8 @@ def passgen(options):
     :param options: options (see args.py for details)
     :return: generator yielding passphrases according to options.
     """
-    all_words = get_words_from_dictionary(options.dictionary)
-    picker = make_picker_generator(all_words, options.numwords)
+    dictionary_words = make_word_generator(options.dictionary)
+    picker = make_picker_generator(dictionary_words, options.numwords)
     while True:
         picked_words = next(picker)
         transformed_words = transform(picked_words)

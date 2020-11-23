@@ -3,7 +3,7 @@ DICTIONARIES = {
 }
 
 
-def get_words_from_dictionary(dictionary):
+def make_word_generator(dictionary):
     """
     Return a generator yielding words from dictionary. Dictionary
     must be one of the currently available (see DICTIONARIES).
