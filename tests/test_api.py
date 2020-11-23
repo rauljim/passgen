@@ -4,6 +4,7 @@ from passgen import api, args
 
 DEFAULT_OPTIONS = args.get_cli_options([])
 
+
 class Test(TestCase):
     def test_passgen(self):
         password_generator = api.passgen(DEFAULT_OPTIONS)
