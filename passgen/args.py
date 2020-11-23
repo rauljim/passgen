@@ -4,7 +4,7 @@ DEFAULT_DICTIONARY = 'eff-long'
 DEFAULT_NUM_WORDS = 5
 DEFAULT_COUNT = 1
 DEFAULT_MIN_CHARS = 1
-DEFAULT_MAX_CHARS = 2**15  # that should be large enough (even for hyper-long compounded words) :-)
+DEFAULT_MAX_CHARS = 2 ** 15  # that should be large enough (even for hyper-long compounded words) :-)
 
 
 def get_cli_options(argv=None):
@@ -29,8 +29,12 @@ def get_cli_options(argv=None):
     if argv is not None and len(argv) > 0:
         argv = argv[1:]  # parse_args doesn't want first arg (program name)
     options = parser.parse_args(argv)
+
+    if options.count < 0:  # --count 0 is noop
+        print(f'WARING: ignoring negative --count.')  # todo: maybe this can be done in the parser?
+        options.count = DEFAULT_COUNT
     if options.max_chars < options.min_chars:
-        print(f'WARNING: ignoring max_chars because max_chars ({options.max_chars}) < min_chars ({options.min_chars})')
+        print(f'WARNING: ignoring --max-chars: max-chars ({options.max_chars}) < min-chars ({options.min_chars})')
         options.max_chars = DEFAULT_MAX_CHARS
     return options
 

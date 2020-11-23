@@ -25,6 +25,9 @@ class Test(TestCase):
         mock_argv = ['passgen']
         options = args.get_cli_options(mock_argv)
         assert args.DEFAULT_COUNT == options.count
+        mock_argv = ['passgen', '--count', '-1']  # negative value ignored
+        options = args.get_cli_options(mock_argv)
+        assert args.DEFAULT_COUNT == options.count
 
     def test_min_chars(self):
         mock_argv = ['passgen', '--min-chars', '33']
