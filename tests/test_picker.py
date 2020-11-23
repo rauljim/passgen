@@ -1,3 +1,4 @@
+import itertools
 from unittest import TestCase
 import random
 
@@ -21,3 +22,12 @@ class TestPicker(TestCase):
         options.num_words = 9999
         picker_generator = picker.make_picker_generator('abc', options)
         assert 9999 == len(next(picker_generator))
+
+    def test_picking_from_empty(self):
+        picker_generator = picker.make_picker_generator([])
+        with self.assertRaises(StopIteration):
+            next(picker_generator)
+
+        picker_generator = picker.make_picker_generator([])
+        for picked_words in itertools.islice(picker_generator, 3):
+            print(picked_words)

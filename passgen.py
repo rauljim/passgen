@@ -9,3 +9,4 @@ if __name__ == '__main__':
     passwords = api.passgen(cli_options)
     for password in itertools.islice(passwords, cli_options.count):
         print(password)
+    # todo: print some error message when passwords can't be generated due to restrictive specs

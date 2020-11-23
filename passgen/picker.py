@@ -15,6 +15,8 @@ def make_picker_generator(words, options=None):
     :return: Generator yielding list of str, according to specs.
     """
     def get_generator():
+        if not word_list:
+            return  # can't generate anything from an empty list of words
         while True:
             yield [_choice(word_list) for _ in range(options.num_words)]
 

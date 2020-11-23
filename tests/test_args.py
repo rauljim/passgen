@@ -48,7 +48,6 @@ class Test(TestCase):
         assert 9999 == options.min_chars
         assert args.DEFAULT_MAX_CHARS == options.max_chars
 
-
     def test_get_defaults(self):
         options = args.get_default_options()
         assert args.DEFAULT_COUNT == options.count
