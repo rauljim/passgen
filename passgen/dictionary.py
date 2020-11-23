@@ -4,6 +4,12 @@ DICTIONARIES = {
 
 
 def get_words_from_dictionary(dictionary):
+    """
+    Return a generator yielding words from dictionary. Dictionary
+    must be one of the currently available (see DICTIONARIES).
+    :param dictionary: string indicating what dictionary to use.
+    :return: generator yielding words from dictionary.
+    """
     def get_generator():
         with open(filename) as f:
             for line in f:

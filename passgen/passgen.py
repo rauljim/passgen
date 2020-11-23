@@ -4,6 +4,13 @@ from passgen.transformer import transform
 
 
 def passgen(options):
+    """
+    Main API
+
+    Return a generator yielding passphrases according to options.
+    :param options: options (see args.py for details)
+    :return: generator yielding passphrases according to options.
+    """
     all_words = get_words_from_dictionary(options.dictionary)
     picker = Picker(all_words, options.numwords)
     while True:
